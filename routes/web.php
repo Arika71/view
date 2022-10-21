@@ -1,5 +1,8 @@
 <?php
 
+use App\Http\Controllers\UserController;
+use App\Models\User;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -15,4 +18,13 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return view('welcome');
+});
+
+Route::get('/user',[UserController::class,'index']);
+Route::get('/test',function(){
+    User::create([
+     'name'=>'shree',
+     'email'=>'shreejesh@gmail.com',
+     'password'=>Hash::make('password'),
+    ]);
 });
